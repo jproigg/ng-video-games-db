@@ -2,6 +2,7 @@
   "name": "ng-video-game-db",
   "version": "0.0.0",
   "scripts": {
+    "sonar": "sonar-scanner",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

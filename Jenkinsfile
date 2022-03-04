@@ -30,11 +30,11 @@ pipeline {
 
         stage ("scan code with sonar") {
             agent {
-                label "Linux"
+                label "windows-worker"
             }
             steps {
                 withSonarQubeEnv("sonar-jose") {
-                    sh "mvn clean package sonar:sonar"
+                    powershell "npm run sonar"
                 }
             }
         }
