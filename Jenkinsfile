@@ -33,11 +33,13 @@ pipeline {
                 label "Linux"
             }
             steps {
-                withSonarQubeEnv(installationName: "sonar-jose") {
-                    sh "mvn clean package sonar:sonar"
+                container("maven") {
+                    script {
+                        withSonarQubeEnv("sonar-jose") {
+                            sh "mvn clean package sonar:sonar"
+                        }
+                    }
                 }
-            }
-        }
         
         stage('Build Execution') {
             agent {
