@@ -1,44 +1,38 @@
 pipeline {
-    agent {
-        label "windows-worker"
-    }
+    agent any
     stages {
         stage('Angular Verification') {
+            agent{
+                label "windows-worker"
+            }
             steps {
                 bat "ng version"
             }
         }
         
         stage('Dependencies Installation') {
+            agent {
+                label "windows-worker"
+            }
             steps {
                 bat "npm install"
             }
         }
     
-    agent {
-        any
-    }
-    stages {
-        stage("Docker verification") {
+
+        stage('Docker verification') {
+            agent {
+                any
+            }
             steps {
                 sh "docker ps"
             }
-        }     
-    }
-    
-
-    /*stage('Docker verification') {
-            steps {
-                script {
-                    powershell "Install-PackageProvider -Name Nuget -Force"
-                    powershell "Install-Module -Name DockerMsftProvider -Repository PSGallery -Force"
-                    powershell "Install-Package -Name docker -ProviderName DockerMsftProvider"
-                    powershell "docker ps"
-                }
-            }
-        }*/
+        }
         
         stage('Build Execution') {
+            agent {
+                label "windows-worker"
+            }
             steps {
                 script {
                     bat "ng build"
@@ -48,6 +42,9 @@ pipeline {
         }
         
         stage('Deploy Application') {
+            agent {
+                label "windows-worker"
+            }
             steps {
                 script {
                     powershell "cp -r ./dist/ng-video-game-db  /*.* C:/inetpub/wwwroot/jose/prod/"
