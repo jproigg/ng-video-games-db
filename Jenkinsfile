@@ -28,6 +28,17 @@ pipeline {
                 sh "docker ps"
             }
         }
+
+        stage ("scan code with sonar") {
+            agent {
+                label "Linux"
+            }
+            steps {
+                withSonarQubeEnv(installationName: "sonar-jose") {
+                    sh "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar"
+                }
+            }
+        }
         
         stage('Build Execution') {
             agent {
