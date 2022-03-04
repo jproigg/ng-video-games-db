@@ -35,8 +35,9 @@ pipeline {
                 label "Linux"
             }
             steps {
+                sh "npm install"
                 withSonarQubeEnv(installationName: "sonar-jose") {
-                    sh "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar"
+                    sh "./npm run sonar-scanner"
                 }
             }
         }
