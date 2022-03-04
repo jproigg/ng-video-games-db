@@ -21,7 +21,7 @@ pipeline {
     
         stage ("Sonaqube Docker") {
             agent {
-                docker {image "sonaqube:latest"}
+                docker {image "sonarqube:latest"}
             }
             steps {
                 sh "docker ps"
