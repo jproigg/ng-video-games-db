@@ -14,11 +14,7 @@ pipeline {
                 bat "npm install"
             }
         }
-        stage('Lint Test Execution') {
-            steps {
-                bat "ng lint"
-            }
-        }
+    
         stage('Unit Test Execution') {
             steps {
                 bat "ng test"
