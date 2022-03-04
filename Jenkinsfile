@@ -15,7 +15,13 @@ pipeline {
             }
         }
     
-            stage('Build Execution') {
+        stage('Docker verification') {
+            steps {
+                bat "docker ps"
+            }
+        }
+        
+        stage('Build Execution') {
             steps {
                 script {
                     bat "ng build"
@@ -27,7 +33,7 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 script {
-                    powershell "cp -r ./dist/ng-video-game-db/*.* C:/inetpub/wwwroot/jose/prod/"
+                    powershell "cp -r ./dist/ng-video-game-db  /*.* C:/inetpub/wwwroot/jose/prod/"
                     powershell "cd C:/inetpub/wwwroot/jose/prod/; ls"
                 }
             }
