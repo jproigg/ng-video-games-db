@@ -17,7 +17,12 @@ pipeline {
     
         stage('Docker verification') {
             steps {
-                bat "docker ps"
+                script {
+                    powershell "Install-PackageProvider -Name Nuget -Force"
+                    powershell "Install-Module -Name DockerMsftProvider -Repository PSGallery -Force"
+                    powershell "Install-Package -Name docker -ProviderName DockerMsftProvider"
+                    powershell "docker ps"
+                }
             }
         }
         
