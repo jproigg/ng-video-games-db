@@ -19,13 +19,13 @@ pipeline {
             steps {
                 bat "ng lint"
             }
-        }*/
+        }
 
         stage("unit test") {
             steps {
                 bat "ng test"
             }
-        }
+        }*/
         
         stage('Build Execution') {
             steps {
@@ -40,7 +40,6 @@ pipeline {
             steps {
                 script {
                     powershell "cp -r ./dist/ng-video-game-db  /*.* C:/inetpub/wwwroot/jose/prod/"
-                    powershell "cd C:/inetpub/wwwroot/jose/prod/; ls"
                 }
             }
         }
