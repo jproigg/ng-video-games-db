@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv("sonar-jose") {
-                    powershell "npm run sonar"
+                    bat "npm run sonar"
                 }
             }
         }
