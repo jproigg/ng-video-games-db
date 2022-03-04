@@ -40,7 +40,7 @@ pipeline {
                         }
                     }
                 }
-        
+            }
         stage('Build Execution') {
             agent {
                 label "windows-worker"
