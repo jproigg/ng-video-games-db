@@ -1,36 +1,33 @@
 pipeline {
-    agent any
+    agent {
+        label "windows-worker"
+    }
     stages {
         stage('Angular Verification') {
-            agent{
-                label "windows-worker"
-            }
             steps {
                 bat "ng version"
             }
         }
         
         stage('Dependencies Installation') {
-            agent {
-                label "windows-worker"
-            }
             steps {
                 bat "npm install"
             }
         }
     
-
-        stage('Docker verification') {
-            agent any
+        stage("lint test") {
             steps {
-                sh "docker ps"
+                bat "ng lint"
+            }
+        }
+
+        stage("unit test") {
+            steps {
+                bat "ng test"
             }
         }
         
         stage('Build Execution') {
-            agent {
-                label "windows-worker"
-            }
             steps {
                 script {
                     bat "ng build"
@@ -40,9 +37,6 @@ pipeline {
         }
         
         stage('Deploy Application') {
-            agent {
-                label "windows-worker"
-            }
             steps {
                 script {
                     powershell "cp -r ./dist/ng-video-game-db  /*.* C:/inetpub/wwwroot/jose/prod/"
