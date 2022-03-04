@@ -20,9 +20,7 @@ pipeline {
         }
     
         stage ("Sonarqube Docker") {
-            agent {
-                label "linux"
-            }
+            agent any
             steps {
                 sh "docker ps"
             }
