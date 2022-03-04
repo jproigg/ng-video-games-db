@@ -26,7 +26,10 @@ pipeline {
         
         stage('Deploy Application') {
             steps {
-                bat "xcopy dist\\ng-video-game-db C:\\inetpub\\wwwroot\\jose\\main /s /y"
+                script {
+                    powershell "cp -r ./dist/ng-video-game-db/*.* C:/inetpub/wwwroot/jose/prod/"
+                    powershell "cd C:/inetpub/wwwroot/jose/prod/; ls"
+                }
             }
         }
     }
