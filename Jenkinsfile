@@ -21,7 +21,7 @@ pipeline {
     
         stage ("Sonarqube Docker") {
             agent {
-                docker {image "sonarqube:latest"}
+                docker {image "python:latest"}
             }
             steps {
                 echo "sonarqube installed"
