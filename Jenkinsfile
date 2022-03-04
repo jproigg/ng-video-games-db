@@ -17,9 +17,10 @@ pipeline {
     
             stage('Build Execution') {
             steps {
-                
-                bat "ng build"
-                powershell "ls"
+                script {
+                    bat "ng build"
+                    powershell "ls" 
+                }
             }
         }
         
