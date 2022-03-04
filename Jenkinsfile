@@ -15,11 +15,6 @@ pipeline {
             }
         }
     
-        stage('Unit Test Execution') {
-            steps {
-                bat "ng test"
-            }
-        }
             stage('Build Execution') {
             steps {
                 bat "ng build"
