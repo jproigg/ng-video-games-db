@@ -29,7 +29,9 @@ pipeline {
         }
 
         stage ("scan code with sonar") {
-            agent any
+            agent {
+                label "Linux"
+            }
             steps {
                 withSonarQubeEnv("sonar-jose") {
                     sh "mvn clean package sonar:sonar"
