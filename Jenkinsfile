@@ -30,7 +30,7 @@ pipeline {
 
         stage ("scan code with sonar") {
             agent {
-                label "windows-worker"
+                docker {image "sonarqube"} 
             }
             steps {
                 withSonarQubeEnv(installationName: "sonar-jose") {
