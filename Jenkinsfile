@@ -30,7 +30,7 @@ pipeline {
 
         stage ("scan code with sonar") {
             agent {
-                label "linux"
+                label "Linux"
             }
             steps {
                 withSonarQubeEnv(installationName: "sonar-jose") {
