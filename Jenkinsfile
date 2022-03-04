@@ -29,19 +29,14 @@ pipeline {
         }
 
         stage ("scan code with sonar") {
-            agent {
-                label "Linux"
-            }
+            agent any
             steps {
-                container("maven") {
-                    script {
-                        withSonarQubeEnv("sonar-jose") {
-                            sh "mvn clean package sonar:sonar"
-                        }
-                    }
+                withSonarQubeEnv("sonar-jose") {
+                    sh "mvn clean package sonar:sonar"
                 }
             }
         }
+            
         stage('Build Execution') {
             agent {
                 label "windows-worker"
