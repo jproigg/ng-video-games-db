@@ -21,9 +21,7 @@ pipeline {
     
 
         stage('Docker verification') {
-            agent {
-                any
-            }
+            agent any
             steps {
                 sh "docker ps"
             }
