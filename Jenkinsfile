@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     bat "ng build"
-                    powershell "ls" 
+                    powershell "ls dist" 
                 }
             }
         }
