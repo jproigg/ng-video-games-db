@@ -21,10 +21,10 @@ pipeline {
     
         stage ("Sonarqube Docker") {
             agent {
-                docker {image "python:latest"}
+                label "linux"
             }
             steps {
-                echo "sonarqube installed"
+                sh "docker ps"
             }
         }
         
