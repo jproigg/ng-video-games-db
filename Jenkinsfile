@@ -30,11 +30,11 @@ pipeline {
 
         stage ("scan code with sonar") {
             agent {
-                docker {image "sonarqube"} 
+                label "linux"
             }
             steps {
                 withSonarQubeEnv(installationName: "sonar-jose") {
-                    powershell "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:4.7.0.2747:sonar"
+                    sh "mvn clean package sonar:sonar"
                 }
             }
         }
