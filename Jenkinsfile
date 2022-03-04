@@ -19,12 +19,12 @@ pipeline {
             }
         }
     
-        stage ("Sonaqube Docker") {
+        stage ("Sonarqube Docker") {
             agent {
                 docker {image "sonarqube:latest"}
             }
             steps {
-                sh "docker ps"
+                echo "sonarqube installed"
             }
         }
         
