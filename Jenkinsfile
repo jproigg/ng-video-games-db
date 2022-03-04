@@ -25,6 +25,7 @@ pipeline {
             }
             steps {
                 sh "docker ps"
+                echo "ver docker"
             }
         }
         
