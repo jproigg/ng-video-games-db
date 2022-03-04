@@ -32,12 +32,11 @@ pipeline {
 
         stage ("scan code with sonar") {
             agent {
-                label "Linux"
+                label "windows-worker"
             }
             steps {
-                sh "npm install"
                 withSonarQubeEnv(installationName: "sonar-jose") {
-                    sh "./npm run sonar-scanner"
+                    powershell "npm run sonar-scanner"
                 }
             }
         }
