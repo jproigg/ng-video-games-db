@@ -1,42 +1,48 @@
 pipeline {
-    agent {
-        label "windows-worker"
-    }
+    agent none
     stages {
         stage('Angular Verification') {
+            agent {
+                label "windows-worker"
+            }
             steps {
                 bat "ng version"
             }
         }
         
         stage('Dependencies Installation') {
+            agent {
+                label "windows-worker"
+            }
             steps {
                 bat "npm install"
             }
         }
     
-       /* stage("lint test") {
+        stage ("Sonaqube Docker") {
+            agent {
+                docker {image "sonaqube:latest"}
+            }
             steps {
-                bat "ng lint"
+                sh "docker ps"
             }
         }
-
-        stage("unit test") {
-            steps {
-                bat "ng test"
-            }
-        }*/
         
         stage('Build Execution') {
+            agent {
+                label "windows-worker"
+            }
             steps {
                 script {
                     bat "ng build"
-                    powershell "ls dist" 
                 }
             }
         }
         
         stage('Deploy Application') {
+            agent {
+                label "windows-worker"
+            }
             steps {
                 script {
                     powershell "cp -r ./dist/ng-video-game-db/*.* C:/inetpub/wwwroot/jose/prod/"
