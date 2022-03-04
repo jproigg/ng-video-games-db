@@ -15,11 +15,11 @@ pipeline {
             }
         }
     
-        stage("lint test") {
+       /* stage("lint test") {
             steps {
                 bat "ng lint"
             }
-        }
+        }*/
 
         stage("unit test") {
             steps {
