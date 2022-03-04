@@ -24,19 +24,17 @@ pipeline {
                 label "Linux"
             }
             steps {
-                sh "docker rm -f sonarqube"
-                sh "docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube"
                 sh "docker ps"
             }
         }
 
         stage ("scan code with sonar") {
             agent {
-                label "Linux"
+                label "windows-worker"
             }
             steps {
                 withSonarQubeEnv(installationName: "sonar-jose") {
-                    sh "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:4.7.0.2747:sonar"
+                    powershell "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:4.7.0.2747:sonar"
                 }
             }
         }
