@@ -15,7 +15,19 @@ pipeline {
             }
         }
     
-        stage('Docker verification') {
+    agent {
+        any
+    }
+    stages {
+        stage("Docker verification") {
+            steps {
+                sh "docker ps"
+            }
+        }     
+    }
+    
+
+    /*stage('Docker verification') {
             steps {
                 script {
                     powershell "Install-PackageProvider -Name Nuget -Force"
@@ -24,7 +36,7 @@ pipeline {
                     powershell "docker ps"
                 }
             }
-        }
+        }*/
         
         stage('Build Execution') {
             steps {
