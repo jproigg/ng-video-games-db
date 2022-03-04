@@ -39,7 +39,7 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 script {
-                    powershell "cp -r ./dist/ng-video-game-db  /*.* C:/inetpub/wwwroot/jose/prod/"
+                    powershell "cp -r ./dist/ng-video-game-db/*.* C:/inetpub/wwwroot/jose/prod/"
                 }
             }
         }
