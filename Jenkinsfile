@@ -32,11 +32,11 @@ pipeline {
 
         stage ("scan code with sonar") {
             agent {
-                label "windows-worker"
+                label "Linux"
             }
             steps {
                 withSonarQubeEnv(installationName: "sonar-jose") {
-                    powershell "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:4.7.0.2747:sonar"
+                    sh "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:4.7.0.2747:sonar"
                 }
             }
         }
