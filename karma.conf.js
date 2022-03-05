@@ -12,12 +12,7 @@ module.exports = function (config) {
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
-    client: {
-      jasmine: {
-        random: false
-      },
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
-    },
+
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
