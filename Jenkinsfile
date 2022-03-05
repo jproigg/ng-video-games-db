@@ -24,7 +24,7 @@ pipeline {
                 label "windows-worker"
             }
             steps {
-                bat "ng test"
+                bat "npm run test --watch=false"
             }
         }
 
