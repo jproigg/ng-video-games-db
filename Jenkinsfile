@@ -16,7 +16,6 @@ pipeline {
             }
             steps {
                 bat "npm install"
-                bat "npm install --save-dev sonar-scanner"
             }
         }
     
