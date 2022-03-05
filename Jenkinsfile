@@ -16,6 +16,7 @@ pipeline {
             }
             steps {
                 bat "npm install"
+                bat "npm install --save-dev sonar-scanner"
             }
         }
     
@@ -33,10 +34,7 @@ pipeline {
                 label "windows-worker"
             }
             steps {
-                bat "npm install sonar-scanner --save-dev"
-                withSonarQubeEnv("sonar-jose") {
-                    powershell "sonar-scanner"
-                }
+                bat "npm run sonar"
             }
         }
             
