@@ -20,23 +20,15 @@ pipeline {
             }
         }
     
-        stage ("Sonarqube Docker") {
-            agent {
-                label "Linux"
-            }
-            steps {
-                sh "docker ps"
-            }
-        }
-
-        stage ("scan code with sonar") {
+        stage ("Unit Testing") {
             agent {
                 label "windows-worker"
             }
             steps {
-                bat "npm run sonar"
+                bat "ng test"
             }
         }
+
             
         stage('Build Execution') {
             agent {
