@@ -10,8 +10,5 @@ RUN npm install
 
 COPY . /app
 
-RUN npm run build --prod
+RUN ng build --prod
 
-FROM nginx:1.17.1-alpine
-	
-COPY --from=build-step /app/dist/np-video-games-db /usr/share/nginx/html
