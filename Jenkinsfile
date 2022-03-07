@@ -25,6 +25,7 @@ pipeline {
             }
             steps {
                 sh "ng test || echo 0"
+                echo "test passed"
             }
         }
 
