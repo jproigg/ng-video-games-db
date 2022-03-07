@@ -6,7 +6,7 @@ pipeline {
                 label "Linux"
             }
             steps {
-                bat "ng version"
+                sh "ng version"
             }
         }
         
@@ -15,7 +15,7 @@ pipeline {
                 label "Linux"
             }
             steps {
-                bat "npm install"
+                sh "npm install"
             }
         }
     
@@ -24,7 +24,7 @@ pipeline {
                 label "Linux"
             }
             steps {
-                bat "ng test || echo 0"
+                sh "ng test || echo 0"
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
             }
             steps {
                 script {
-                    bat "ng build"
+                    sh "ng build"
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
             }
             steps {
                 script {
-                    powershell "cp -r ./dist/ng-video-game-db/*.* C:/inetpub/wwwroot/jose/prod/"
+                    sh "cp -r ./dist/ng-video-game-db/*.* C:/inetpub/wwwroot/jose/prod/"
                 }
             }
         }
