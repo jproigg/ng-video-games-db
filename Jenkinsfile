@@ -44,7 +44,7 @@ pipeline {
             agent any
             steps {
                 script {
-                    dockerImage = docker.build registry
+                dockerImage = sh "docker build ./dist/ng-video-game-db/"
                 }
             }
         }
