@@ -35,7 +35,7 @@ pipeline {
             agent any
             steps {
                 script {
-                dockerImage = docker.build 
+                dockerImage = docker.build registry
                 }
             }
         }
