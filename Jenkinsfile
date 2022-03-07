@@ -1,5 +1,11 @@
 pipeline {
     agent none
+    environment {
+        registry = "jproigg/ng-video-game-db"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
+
     stages {
         stage('Angular Verification') {
             agent any
@@ -29,9 +35,32 @@ pipeline {
             steps {
                 script {
                     sh "ng build"
+                    sh "ls"
                 }
             }
         }
+
+        stage('build docker image') {
+            agent any
+            steps {
+                script {
+                    dockerImage = docker.build registry
+                }
+            }
+        }
+
+        stage('push to docker hub') {
+            agent any
+            steps {    
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
+                }
+            }
+        }
+
+
         
         stage('Deploy Application') {
             agent any
