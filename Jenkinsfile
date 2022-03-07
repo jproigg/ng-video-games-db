@@ -1,7 +1,6 @@
 pipeline {
     agent none
     environment {
-        filepath = "/var/jenkins_home/workspace/final-angular-jose_main/dist/ng-video-game-db"
         registry = "jproigg/ng-video-game-db"
         registryCredential = 'dockerhub'
         dockerImage = ''
@@ -15,12 +14,6 @@ pipeline {
             }
         }
         
-        stage('Dependencies Installation') {
-            agent any
-            steps {
-                sh "npm install"
-            }
-        }
     
         stage ("Unit Testing") {
             agent any
@@ -30,22 +23,12 @@ pipeline {
             }
         }
 
-            
-        stage('Build Execution') {
-            agent any
-            steps {
-                script {
-                    sh "ng build"
-                    sh "ls"
-                }
-            }
-        }
 
-        stage('build docker image') {
+        stage('build docker image and install dependencies') {
             agent any
             steps {
                 script {
-                dockerImage = docker.build filepath
+                dockerImage = docker.build 
                 }
             }
         }
