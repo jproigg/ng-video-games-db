@@ -63,7 +63,7 @@ pipeline {
          stage('Deploy') {
             steps{
                 script {
-                    dockerImage.run("-p 8096:5000 --rm --name ng-video-game-db")
+                    dockerImage.run("-p 8096:5001 --rm --name ng-video-game-db")
                 }
             }
         }

@@ -11,6 +11,8 @@ RUN npm install
 
 COPY . /app
 
+EXPOSE 5001
+
 RUN npm run build --prod
 
 
