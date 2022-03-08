@@ -8,9 +8,11 @@ COPY package.json /app
 
 RUN npm install
 
+RUN npm install -g ng-cli
+
 COPY . /app
 
-RUN npm run build --prod
+RUN ng build 
 
 FROM nginx:1.17.1-alpine
 

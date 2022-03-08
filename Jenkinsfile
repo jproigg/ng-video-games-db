@@ -51,13 +51,13 @@ pipeline {
             }
         }
 
-        stage('Stop running container') {
+        /*stage('Stop running container') {
             agent any
             steps {
                 sh 'docker ps -f name=ng-video-game-db -q | xargs --no-run-if empty docker container stop'
                 sh 'docker container ls -a -f name=ng-video-game-db -q | xargs -r docker container rm'
             }
-        }
+        }*/
 
 
          stage('Deploy') {
