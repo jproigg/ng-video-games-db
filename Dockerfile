@@ -1,4 +1,4 @@
-FROM node:10-alpine as build-step
+FROM node:10-alpine 
 
 RUN mkdir -p /app
 
@@ -10,8 +10,4 @@ RUN npm install
 
 COPY . /app
 
-RUN ng run build --prod 
-
-FROM nginx:1.17.1-alpine
-
-COPY --from=build-step /app/dist/ng-video-game-db /usr/share/nginx/html
+RUN npm run build 
