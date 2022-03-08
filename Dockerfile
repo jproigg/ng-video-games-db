@@ -8,11 +8,11 @@ COPY package.json /app
 
 RUN npm install
 
-RUN npm install -g ng-cli
+RUN sudo npm install -g @angular/cli
 
 COPY . /app
 
-RUN ng build 
+RUN ng build --prod 
 
 FROM nginx:1.17.1-alpine
 
