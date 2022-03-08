@@ -76,7 +76,7 @@ pipeline {
                     dockerImage.run("-p 8096:5000 --rm --name ng-video-game-db")
                 }
             }
-        }
+        }*/
  
     }
 }
