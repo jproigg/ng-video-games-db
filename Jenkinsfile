@@ -26,17 +26,17 @@ pipeline {
         stage('compile application and install dependencies') {
             agent { dockerfile true }
             steps {
-            stash includes: 'dist/', name: 'dist'
-            echo 'success'
+                stash includes: 'dist/', name: 'dist'
+                echo 'success'
             }
         }
 
         stage('compile application and install dependencies') {
             agent any
             steps {
-            unstash 'dist'
-            sh ' ls dist'
-            echo 'success'
+                unstash 'dist'
+                sh ' ls dist'
+                echo 'success'
             }
         }       
 
