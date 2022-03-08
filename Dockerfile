@@ -7,10 +7,12 @@ WORKDIR /app
 COPY package.json /app
 
 RUN npm install
-i
+
+RUN npm install -g @angular/cli
+
 COPY . /app
 
-RUN npm build --prod 
+RUN ng run build --prod 
 
 FROM nginx:1.17.1-alpine
 
