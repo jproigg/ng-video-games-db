@@ -51,15 +51,23 @@ pipeline {
             }
         }
 
-
-        
-        stage('Deploy Application') {
+        stage('Stop running container') {
             agent any
             steps {
+                sh 'docker ps -f name=ng-video-game-db -q | xargs --no-run-if empty docker
+                container stop'
+                sh 'docker container ls -a -f name=ng-video-game-db -q | xargs -r docker container rm'
+            }
+        }
+
+
+         stage('Deploy') {
+            steps{
                 script {
-                    sh "cp -r ./dist/ng-video-game-db/*.* C:/inetpub/wwwroot/jose/prod/"
+                    dockerImage.run("-p 8096:5000 --rm --name ng-video-game-db")
                 }
             }
         }
+ 
     }
 }
