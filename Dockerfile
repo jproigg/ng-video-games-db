@@ -13,6 +13,6 @@ COPY . /app
 RUN npm run build 
 
 
-FROM nginx:1.17.1-alpine
+#FROM nginx:1.17.1-alpine
 
-COPY --from=build-step /app/dist/ng-video-game-db /usr/share/nginx/html
+#COPY --from=build-step /app/dist/ng-video-game-db /usr/share/nginx/html
