@@ -31,7 +31,7 @@ pipeline {
             }
         }
 
-        stage('compile application and install dependencies') {
+        stage('test dist') {
             agent any
             steps {
                 unstash 'dist'
